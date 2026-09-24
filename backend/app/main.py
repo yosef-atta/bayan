@@ -1,6 +1,11 @@
 from fastapi import FastAPI
 
 from app.core.config import settings
+from app.core.logging import setup_logging
+from app.core.sentry import init_sentry
+
+setup_logging(settings.LOG_LEVEL)
+init_sentry()
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
